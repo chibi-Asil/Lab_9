@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!-- # Lab 9: Birthdays -->
+<!-- https://cs50.harvard.edu/extension/2020/fall/labs/9/ -->
+<!-- Create a web application to keep track of friends’ birthdays. -->
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="/static/styles.css" rel="stylesheet">
+        <title>Birthdays</title>
+    </head>
+    <body>
+        <div class="jumbotron">
+            <h1>Birthdays</h1>
+        </div>
+        <div class="container">
+            <div class="section">
+
+                <h2>Add a Birthday</h2>
+                <!-- TODO: Create a form for users to submit a name, a month, and a day -->
+                <!-- Then, in index.html, add logic to render each birthday as a row in the table. Each row should have two columns: one column for the person’s name and another column for the person’s birthday. -->
+                <table>
+                    <thead>
+                        <tr>
+                                <th>Name</th>
+                                <th>Month</th>
+                                <th>Day</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for names in name %}
+                            <tr>
+                                <td>{{ names }}</td>
+                                <td>{{ name[names] }}</td>
+                            </tr>
+                        {% endfor %}    
+                    </tbody>
+                    <tbody>
+                        {% for birth_month in month %}
+                            <tr>
+                                <td>{{ birth_month }}</td>
+                                <td>{{ month[birth_month ]}}</td>
+                            </tr>
+                        {% endfor %}    
+                    </tbody>
+                    <tbody>
+                        {% for birth_day in day %}
+                        <tr>
+                            <td>{{ birth_day }}</td>
+                            <td>{{ day[birth_day] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+
+                <h2>All Birthdays</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Birthday</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- TODO: Loop through the database entries to display them in this table -->
+                        <!-- When the / route is requested via POST, your web application should add a new birthday to your database and then re-render the index page. -->
+                        <!-- First, in index.html, add an HTML form. The form should let users type in a name, a birthday month, and a birthday year. Be sure the form submits to / (its “action”) with a method of post. -->
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

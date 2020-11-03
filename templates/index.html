@@ -18,7 +18,18 @@
 
                 <h2>Add a Birthday</h2>
                 <!-- TODO: Create a form for users to submit a name, a month, and a day -->
-                {% block body %} {% endblock %}
+                <form action = "/information" method = "get">
+                    <input autocomplete = "off" autofocus = "name" placeholder = "Name" type = "text">
+                    <input autocomplete = "off" autofocus = "month" placeholder = "Month" type = "numeric">
+                    <input autocomplete = "off" autofocus = "day" placeholder = "Day" type = "numeric">
+
+                    {% for month in months %}
+                        <input name = "month" value = "{{ month }}"> {{ month }}
+                        <input name = "day" value = "{{ day }}"> {{ day }}
+                    {% endfor %}
+
+                    <input type = "button" value = "Add Birthday">
+                </form>
             </div>
 
             <div class="section">

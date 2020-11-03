@@ -8,9 +8,10 @@ from flask import Flask, flash, jsonify, redirect, render_template, request, ses
 # Configure application
 app = Flask(__name__)
 
-class birthday(Form):
+class birthday():
     name = []
-    birthdate = NumericField('Month' + 'Day')
+    months = [("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12")]
+
 
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True
@@ -35,5 +36,23 @@ def index():
         # name_print = name.query.all()
         return render_template("index.html")
 
+@app.route('/results')
+def search_results(search):
+    results = []
+    search_string = search.data['name', 'month', 'day']
 
+    if search.data['search'] == '':
+        qry = db.query(birthdays)
+        results = qry.all()
+
+    if not results:
+        flash("No results found!")
+        return redirect('/')
+    else:
+        return render_template('information.html', table = table)
+
+@app.route('/new_additions', methods = ["GET", "POST"])
+def new_additions():
+    form = new_birthdays(request.form)
+    return render_template("new_additions.html", form = form)
 

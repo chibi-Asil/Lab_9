@@ -8,11 +8,27 @@ from flask import Flask, flash, jsonify, redirect, render_template, request, ses
 # Configure application
 app = Flask(__name__)
 
+MONTH = [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12"
+    ]
+
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 # Configure CS50 Library to use SQLite database
 db = SQL("sqlite:///birthdays.db")
+
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -22,12 +38,13 @@ def index():
         name = name.query.filter_by(name = name).first
         month = month.query.filter_by(month = month).numeric
         day = day.query.filter_by(day = day).numeric
-        return redirect("/", name = name, month = month, day = day)
+        return redirect("/", name = name, month = MONTH, day = day)
 
     else:
 
         # TODO: Display the entries in the database on index.html
-        if not request.form.get("name") or request.form.get("month") or request.form.get("day"):
-            return render_template("index.html")
+        name_print = name.query.all()
+        return render_template("index.html", name_print = name_print)
+
 
 

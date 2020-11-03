@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<!-- # Lab 9: Birthdays -->
+<!-- Lab 9: Birthday -->
 <!-- https://cs50.harvard.edu/extension/2020/fall/labs/9/ -->
-<!-- Create a web application to keep track of friends’ birthdays. -->
+
 
 <html lang="en">
     <head>
@@ -18,40 +18,12 @@
 
                 <h2>Add a Birthday</h2>
                 <!-- TODO: Create a form for users to submit a name, a month, and a day -->
-                <!-- Then, in index.html, add logic to render each birthday as a row in the table. Each row should have two columns: one column for the person’s name and another column for the person’s birthday. -->
-                <table>
-                    <thead>
-                        <tr>
-                                <th>Name</th>
-                                <th>Month</th>
-                                <th>Day</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for names in name %}
-                            <tr>
-                                <td>{{ names }}</td>
-                                <td>{{ name[names] }}</td>
-                            </tr>
-                        {% endfor %}    
-                    </tbody>
-                    <tbody>
-                        {% for birth_month in month %}
-                            <tr>
-                                <td>{{ birth_month }}</td>
-                                <td>{{ month[birth_month ]}}</td>
-                            </tr>
-                        {% endfor %}    
-                    </tbody>
-                    <tbody>
-                        {% for birth_day in day %}
-                        <tr>
-                            <td>{{ birth_day }}</td>
-                            <td>{{ day[birth_day] }}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                <form action = "/information" method = "get">
+                    <input autocomplete = "off" autofocus = "name" placeholder = "Name" type = "text">
+                    <input autocomplete = "off" autofocus = "month" placeholder = "Month" type = "numeric">
+                    <input autocomplete = "off" autofocus = "day" placeholder = "Day" type = "numeric">
+                    <input type = "button" value = "Add Birthday">
+                </form>
             </div>
 
             <div class="section">
@@ -66,9 +38,6 @@
                     </thead>
                     <tbody>
                         <!-- TODO: Loop through the database entries to display them in this table -->
-                        <!-- When the / route is requested via POST, your web application should add a new birthday to your database and then re-render the index page. -->
-                        <!-- First, in index.html, add an HTML form. The form should let users type in a name, a birthday month, and a birthday year. Be sure the form submits to / (its “action”) with a method of post. -->
-                        
                     </tbody>
                 </table>
             </div>

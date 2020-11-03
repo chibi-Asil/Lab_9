@@ -8,20 +8,9 @@ from flask import Flask, flash, jsonify, redirect, render_template, request, ses
 # Configure application
 app = Flask(__name__)
 
-MONTH = [
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "10",
-    "11",
-    "12"
-    ]
+class birthday(Form):
+    name = []
+    birthdate = NumericField('Month' + 'Day')
 
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True
@@ -43,8 +32,8 @@ def index():
     else:
 
         # TODO: Display the entries in the database on index.html
-        name_print = name.query.all()
-        return render_template("index.html", name_print = name_print)
+        # name_print = name.query.all()
+        return render_template("index.html")
 
 
 

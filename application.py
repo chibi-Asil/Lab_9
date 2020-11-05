@@ -8,11 +8,6 @@ from flask import Flask, flash, jsonify, redirect, render_template, request, ses
 # Configure application
 app = Flask(__name__)
 
-class birthday():
-    name = []
-    months = [("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12")]
-
-
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
@@ -23,12 +18,8 @@ db = SQL("sqlite:///birthdays.db")
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
-
-        # TODO: Add the user's entry into the database
-        name = name.query.filter_by(name = name).first
-        month = month.query.filter_by(month = month).numeric
-        day = day.query.filter_by(day = day).numeric
-        return redirect("/", name = name, month = MONTH, day = day)
+        birthday = db.execute("SELECT * FROM birthdays")
+        return render_template("index.html", birthday = birthday)
 
     else:
 
@@ -36,23 +27,21 @@ def index():
         # name_print = name.query.all()
         return render_template("index.html")
 
-@app.route('/results')
-def search_results(search):
-    results = []
-    search_string = search.data['name', 'month', 'day']
+# def add_name():
+#     # Validate name
+#     name = request.form.get("name")
+#     month = request.form.get("month")
+#     day = request.form.get("day")
+#     if not name or not day or month not in MONTHS:
+#         return render_template("failure.html")
 
-    if search.data['search'] == '':
-        qry = db.query(birthdays)
-        results = qry.all()
+#     # Remembering the name
+#     db.execute("INSERT INTO birthdays (name, month, day) VALUES(?, ?, ?)", name, month, day)
 
-    if not results:
-        flash("No results found!")
-        return redirect('/')
-    else:
-        return render_template('information.html', table = table)
+#     # Confirming the entry
+#     return redirect("/birthday_names")
 
-@app.route('/new_additions', methods = ["GET", "POST"])
-def new_additions():
-    form = new_birthdays(request.form)
-    return render_template("new_additions.html", form = form)
-
+# @app.route("/birthday_names")
+# def birthday_names():
+#     birthday_names = db.execute("SELECT * FROM birthdays")
+#     return render_template("birthday_names.html", birthday_names = birthday_names)

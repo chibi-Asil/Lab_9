@@ -3,3 +3,12 @@ NOTE: Copying this data and using it for your submission will breach the academi
 Lab 8: Birthdays, https://cs50.harvard.edu/extension/2020/fall/labs/9/
 
 This was produced as a part of CS50 - Introduction to Computer Science. Uploading of my solution to Github is considered to be reasonable regarding the academic honesty policy. (https://www.reddit.com/r/cs50/comments/63235w/is_this_reasonable/)
+
+##Install python3 flask
+pip3 install Flask
+
+#Fix error on mac when app.py has a different name
+export FLASK_APP=application.py
+##Python and Flask
+#run flask
+flask run

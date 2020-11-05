@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="/static/styles.css" rel="stylesheet">
+        <meta name = "viewport" content = "initial-scale = 1, width = device-width">
+        <title>Birthdays</title>
+    </head>
+    <body>
+        <div class="jumbotron">
+            <h1>Birthdays</h1>
+        </div>
+        <div class="container">
+            <div class="section">
+
+                <h2>Add a Birthday</h2>
+                <!-- TODO: Create a form for users to submit a name, a month, and a day -->
+                {% extends "layout.html" %}
+
+                {% block body %}
+                    <form action = /request_information method = "POST">
+                        <input autocomplete = "off" autofocus = "name" placeholder = "Name" type = "text">
+                        <input autocomplete = "off" autofocus = "month" placeholder = "Month" type = "numeric">
+                        <input autocomplete = "off" autofocus = "day" placeholder = "Day" type = "numeric">
+                        <input type = "button" value = "Add Birthday">
+                    </form>
+
+                {% endblock %}
+            </div>
+
+            <div class="section">
+
+                <h2>All Birthdays</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Birthday</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- TODO: Loop through the database entries to display them in this table -->
+                        <!--{% for birthday_name in birthdays_names %}-->
+                        <!--    <tr>-->
+                        <!--        <td> {{ birthday_names.name }}</td>-->
+                        <!--        <td> {{ birthday_names.month }}</td>-->
+                        <!--        <td> {{ birthday_names.day }}</td>-->
+                        <!--        <td>-->
+                        <!--            <form action = "/deletename" method = "post">-->
+                        <!--                <input name = "id" type = "hidden" value = "{{ birthday_name.id }}">-->
+                        <!--                <input type = submit value = "Delete Name">-->
+                        <!--            </form>-->
+                        <!--        </td>-->
+                        <!--    </tr>-->
+                        <!--{% endfor %}-->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

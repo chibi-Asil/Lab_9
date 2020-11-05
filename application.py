@@ -3,9 +3,8 @@
 import os
 
 # from cs50 import SQL
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, flash, jsonify, redirect, render_template, request, session
+from flask_sqlalchemy import SQLAlchemy
 
 # Configure application
 app = Flask(__name__)
